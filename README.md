@@ -105,3 +105,22 @@ Sample queries included in `src/sql_queries.sql`:
 ## 📬 Author
 
 **Yousuf Patel** — [LinkedIn](https://linkedin.com/in/yousuf-patel) · [Email](mailto:yousuf9patel@gmail.com)
+
+---
+
+## 📊 Output Charts
+
+### ROC Curve & Confusion Matrix
+![ROC & Confusion Matrix](outputs/roc_confusion.png)
+
+### Impact of Oversampling on Minority Class Recall
+![Recall Improvement](outputs/recall_improvement.png)
+
+### Attrition Drivers — Feature Importance
+![Feature Importance](outputs/feature_importance.png)
+
+### Remote Work Risk Overlay (4-Country Study)
+![Work Mode Attrition](outputs/workmode_attrition.png)
+
+### Attrition by Department & Overtime
+![Attrition Segments](outputs/attrition_segments.png)
