@@ -5,6 +5,5 @@ __pycache__/
 venv/
 models/*.pkl
 data/
-outputs/
 .DS_Store
 .ipynb_checkpoints/
