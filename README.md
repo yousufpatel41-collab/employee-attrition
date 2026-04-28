@@ -47,7 +47,7 @@ employee-attrition/
 ## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/employee-attrition.git
+git clone https://github.com/yousufpatel41-collab/employee-attrition.git
 cd employee-attrition
 pip install -r requirements.txt
 
