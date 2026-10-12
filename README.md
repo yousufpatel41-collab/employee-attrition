@@ -1,5 +1,7 @@
 # Employee attrition
 
+[![Checks](https://github.com/yousufpatel41-collab/employee-attrition/actions/workflows/tests.yml/badge.svg)](https://github.com/yousufpatel41-collab/employee-attrition/actions)
+
 Uses IBM’s public HR sample data to compare an XGBoost baseline with random oversampling. This is a portfolio experiment, not an employer deployment.
 
 ## Run
@@ -10,6 +12,7 @@ Use Python 3.11 or 3.12 in a virtual environment, from the repository root:
 pip install -r requirements.txt
 python src/download_data.py
 python src/train.py
+python src/build_evaluation_report.py
 python -m unittest discover -s tests
 ```
 
@@ -22,3 +25,24 @@ Random oversampling duplicates training records without creating fractional cate
 ## Data and limits
 
 Source: [IBM employee attrition sample](https://github.com/IBM/employee-attrition-aif360/blob/master/data/emp_attrition.csv). The sample has no work-mode or country fields. `remote_work.py` explains why it cannot estimate remote-work attrition effects. No 2.1× risk claim or causal claim is supported. `sql_queries.sql` contains example queries; import the source CSV as `hr_employees` and adapt your SQL dialect.
+
+## Reproduced results
+
+Held-out set: 294 records; threshold 0.5. The baseline was selected using training CV, even though oversampling has a slightly higher test AUC.
+
+| Model | Training CV AUC | Test AUC | Test recall | Test precision |
+|---|---:|---:|---:|---:|
+| Baseline | 0.8211 | 0.7799 | 23.40% | 78.57% |
+| Random oversampling | 0.8104 | 0.7881 | 34.04% | 48.48% |
+
+The recall/precision trade-off matters more than headline accuracy on this imbalanced sample. No country comparison, SHAP explanation or financial savings claim is made.
+
+## Licence and data rights
+
+Project code and documentation: [MIT](LICENSE). External datasets retain their own terms; see [DATA_SOURCES.md](DATA_SOURCES.md).
+
+## Evaluation chart
+
+![Selected model held-out confusion matrix](outputs/evaluation.svg)
+
+Recreate this chart with `python src/build_evaluation_report.py` after training. It displays recorded holdout counts; it is not a SHAP or feature-importance plot.
